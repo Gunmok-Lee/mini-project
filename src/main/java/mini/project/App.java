@@ -5,6 +5,7 @@ package mini.project;
 
 import java.util.LinkedList;
 import java.util.List;
+import mini.project.domain.Book;
 import mini.project.domain.Member;
 import mini.project.handler.MemberHandler;
 import mini.project.util.Prompt;
@@ -16,6 +17,7 @@ public class App {
     List<Member> memberList = new LinkedList<>();
     MemberHandler memberHandler = new MemberHandler(memberList);
 
+    
     System.out.println("안녕하십니까? \n비트도서관 대여관리 시스템 입니다.");
     System.out.println();
     loop:
@@ -27,6 +29,10 @@ public class App {
 
 
         switch (command) {
+          case "1": bookHandler.add(); break;
+          case "2": bookHandler.list(); break;
+          case "3": bookHandler.update(); break;
+          
           case "7": memberHandler.add(); break;
           case "8": memberHandler.list(); break;
           case "9": memberHandler.detail(); break;
