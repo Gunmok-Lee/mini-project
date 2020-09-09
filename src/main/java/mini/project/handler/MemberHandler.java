@@ -26,7 +26,7 @@ public class MemberHandler {
           break;
         } // end if
       } // end for
-      if(count==0) {
+      if(count == 0) {
         member.setId(id);
         break;
       }
@@ -50,11 +50,10 @@ public class MemberHandler {
 
     while (iterator.hasNext()) {
       Member member = iterator.next();
-      System.out.printf("%s, %s, %s, %s, %s\n",
+      System.out.printf("아이디(%s), 이름(%s), 성별(%s), 가입일(%s)\n",
           member.getId(),
           member.getName(),
           member.getGender(),
-          member.getTel(),
           member.getRegisteredDate());
     }
   }
@@ -71,12 +70,14 @@ public class MemberHandler {
   public void detail() {
     System.out.println("[회원 상세정보]");
     String id = Prompt.inputString("아이디 : ");
-    Member member = findById(id);
+    String password = Prompt.inputString("패스워드 : ");
+    Member member = findByPassword(id, password);
 
     if (member == null) {
-      System.out.println("존재하지 않는 아이디입니다.");
+      System.out.println("아이디 또는 패스워드가 잘못 입력되었습니다.");
       return;
     }
+
 
     System.out.printf("아이디: %s\n", member.getId());
     System.out.printf("이름: %s\n", member.getName());
@@ -148,7 +149,17 @@ public class MemberHandler {
   private Member findById(String id) {
     for (int i = 0; i < memberList.size(); i++) {
       Member member = memberList.get(i);
-      if (member.getId() == id) {
+      if (id.equals(member.getId())) {
+        return member;
+      }
+    }
+    return null;
+  }
+
+  private Member findByPassword(String id, String password) {
+    for (int i = 0; i < memberList.size(); i++) {
+      Member member = memberList.get(i);
+      if (id.equals(member.getId()) && password.equals(member.getPassword())) {
         return member;
       }
     }
@@ -158,7 +169,7 @@ public class MemberHandler {
   private int indexOf(String id) {
     for (int i = 0; i < memberList.size(); i++) {
       Member member = memberList.get(i);
-      if (member.getId() == id) {
+      if (id.equals(member.getId())) {
         return i;
       }
     }

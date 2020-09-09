@@ -33,7 +33,7 @@ public class App {
             System.out.println("이용해 주셔서 감사합니다.");
             break loop;
           default:
-            System.out.println("존재하지 않는 명령입니다.\n다시 입력해주세.");
+            System.out.println("존재하지 않는 명령입니다.\n다시 입력해주세요.");
         }
         System.out.println();
       }
