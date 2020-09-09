@@ -74,7 +74,7 @@ public class BookHandler {
     String author = Prompt.inputString(
         String.format("저자 : [%s] => ", book.getAuthor()));
     String Date = Prompt.inputString(
-        String.format("대여 일자 : [%s] => ", book.getRegisteredDate()));
+        String.format("대여 일자 : [%s] => ", book.getChangeDate()));
     
     book.setBookNo(bookNo);
     book.setBookName(bookName);
