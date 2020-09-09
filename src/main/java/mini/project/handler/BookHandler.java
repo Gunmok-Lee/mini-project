@@ -1,7 +1,5 @@
 package mini.project.handler;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
 import mini.project.domain.Book;
@@ -75,8 +73,8 @@ public class BookHandler {
         String.format("출판사 : [%s] =>  ", book.getCompany()));
     String author = Prompt.inputString(
         String.format("저자 : [%s] => ", book.getAuthor()));
-    Date date = Prompt.inputDate(
-        String.format("대여 일자 : [%s] => ", book.changeDate());
+    String Date = Prompt.inputString(
+        String.format("대여 일자 : [%s] => ", book.getRegisteredDate()));
     
     book.setBookNo(bookNo);
     book.setBookName(bookName);
