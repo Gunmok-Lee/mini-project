@@ -6,7 +6,7 @@ public class Member {
   private String id; // 아이디
   private String name; // 이름
   private int age; // 나이
-  private String gender; // 성별
+  private int gender; // 성별
   private String email; // 이메일
   private String password; // 패스워드
   private String tel; // 전화번호
@@ -29,10 +29,10 @@ public class Member {
   public void setAge(int age) {
     this.age = age;
   }
-  public String getGender() {
+  public int getGender() {
     return gender;
   }
-  public void setGender(String gender) {
+  public void setGender(int gender) {
     this.gender = gender;
   }
   public String getEmail() {

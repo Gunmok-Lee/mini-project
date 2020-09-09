@@ -13,7 +13,7 @@ public class MemberHandler {
   }
 
   public void add() {
-    System.out.println("[회원 가입]");
+    System.out.println("[회원가입]");
 
     Member member = new Member();
     while (true) {
@@ -22,7 +22,7 @@ public class MemberHandler {
       for (int i = 0; i < memberList.size(); i++) {
         if (id.equals(memberList.get(i).getId())) {
           count++;
-          System.out.println("아이디 중복입니다. 다시 입력해주세요.");
+          System.out.println("중복된 아이디입니다. 다시 입력해주세요.");
           break;
         } // end if
       } // end for
@@ -33,7 +33,7 @@ public class MemberHandler {
     } // end while
     member.setName(Prompt.inputString("이름 : "));
     member.setAge(Prompt.inputInt("나이 : "));
-    member.setGender(Prompt.inputString("성별(남자/여자) : "));
+    member.setGender(Prompt.inputInt("성별(1: 남자/2: 여자) : "));
     member.setEmail(Prompt.inputString("이메일 : "));
     member.setPassword(Prompt.inputString("패스워드 : "));
     member.setTel(Prompt.inputString("전화번호 : "));
@@ -50,21 +50,18 @@ public class MemberHandler {
 
     while (iterator.hasNext()) {
       Member member = iterator.next();
+      String genderLabel = null;
+      if (member.getGender() == 1) {
+        genderLabel = "남자";
+      } else {
+        genderLabel = "여자";
+      }
       System.out.printf("아이디(%s), 이름(%s), 성별(%s), 가입일(%s)\n",
           member.getId(),
           member.getName(),
-          member.getGender(),
+          genderLabel,
           member.getRegisteredDate());
     }
-  }
-  public Member findByName(String name) {
-    for (int i = 0; i < memberList.size(); i++) {
-      Member member = memberList.get(i);
-      if (member.getName().equals(name)) {
-        return member;
-      }
-    }
-    return null;
   }
 
   public void detail() {
@@ -81,7 +78,13 @@ public class MemberHandler {
     System.out.printf("아이디: %s\n", member.getId());
     System.out.printf("이름: %s\n", member.getName());
     System.out.printf("나이: %d\n", member.getAge());
-    System.out.printf("성별: %s\n", member.getGender());
+    String genderLabel = null;
+    if (member.getGender() == 1) {
+      genderLabel = "남자";
+    } else {
+      genderLabel = "여자";
+    }
+    System.out.printf("성별: %s\n", genderLabel);
     System.out.printf("이메일: %s\n", member.getEmail());
     System.out.printf("전화: %s\n", member.getTel());
     System.out.printf("가입일: %s\n", member.getRegisteredDate());
@@ -101,8 +104,14 @@ public class MemberHandler {
         String.format("이름 : [%s] => ", member.getName()));
     int age = Prompt.inputInt(
         String.format("나이 : [%d] => ", member.getAge()));
-    String gender = Prompt.inputString(
-        String.format("성별 : [%s] =>  ", member.getGender()));
+    String genderLabel = null;
+    if (member.getGender() == 1) {
+      genderLabel = "남자";
+    } else {
+      genderLabel = "여자";
+    }
+    int gender = Prompt.inputInt(
+        String.format("성별 : [%s] =>  ", genderLabel));
     String email = Prompt.inputString(
         String.format("이메일 : [%s] => ", member.getEmail()));
     String newPassword = Prompt.inputString("패스워드 :  => ");
@@ -126,7 +135,7 @@ public class MemberHandler {
   }
 
   public void delete() {
-    System.out.println("[회원 삭제]");
+    System.out.println("[회원탈퇴]");
     String id = Prompt.inputString("아이디 : ");
     String password = Prompt.inputString("패스워드 : ");
     int index = indexOf(id, password);
@@ -147,6 +156,16 @@ public class MemberHandler {
 
     memberList.remove(index);
     System.out.println("삭제되었습니다.\n그동안 이용해 주셔서 감사합니다.");
+  }
+
+  public Member findByName(String name) {
+    for (int i = 0; i < memberList.size(); i++) {
+      Member member = memberList.get(i);
+      if (member.getName().equals(name)) {
+        return member;
+      }
+    }
+    return null;
   }
 
   @SuppressWarnings("unused")
