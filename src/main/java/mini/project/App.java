@@ -9,7 +9,6 @@ public class App {
   }
 
   public static void main(String[] args) {
-    System.out.println(new App().getGreeting());
-    System.out.println("이건목");
+    System.out.println("이용민");
   }
 }
