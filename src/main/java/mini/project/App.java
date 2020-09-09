@@ -20,7 +20,7 @@ public class App {
     System.out.println();
     loop:
       while (true) {
-        String command = Prompt.inputString("명령을 입력하여 주세요 > ");
+        String command = Prompt.inputString("명령을 입력하세요. > ");
 
         switch (command) {
           case "/member/add": memberHandler.add(); break;
