@@ -168,8 +168,7 @@ public class MemberHandler {
     return null;
   }
 
-  @SuppressWarnings("unused")
-  private Member findById(String id) {
+  public Member findById(String id) {
     for (int i = 0; i < memberList.size(); i++) {
       Member member = memberList.get(i);
       if (id.equals(member.getId())) {
