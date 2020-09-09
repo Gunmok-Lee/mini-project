@@ -15,6 +15,7 @@ public class BookHandler {
   public BookHandler(MemberHandler memberHandler) {
     this.memberHandler = memberHandler;
   }
+  
   public void add() {
     System.out.println("[대여 도서 등록]");
     
@@ -26,21 +27,24 @@ public class BookHandler {
     book.setRegisteredDate(Prompt.inputDate("대여 일시: "));
     
     while (true) {
-      String name = Prompt.inputString("대여자(미 입력 시 대여가 불가능합니다.): ");
+      String id = Prompt.inputString("아이디: ");
       
-      if (name.length() == 0) { // 대여자 미 입력 경우
+      if (id.length() == 0) { // id 미 입력 경우
         System.out.println("도서 대여를 취소합니다.");
         return;
-      } else if (memberHandler.findByName(name) != null) { 
-        member.setName(name); // 등록된 회원과 이름이 일치할 경우
+      } else if (memberHandler.findByName(id) != null) { 
+        member.setName(id); // 등록된 아이디와 일치할 경우
         break;
       }
-      System.out.println("등록된 회원이 아닙니다."); // 등록된 회원과 이름이 일치하지 않을 경우
+      System.out.println("아이디가 일치하지 않습니다."); // 등록된 회원과 이름이 일치하지 않을 경우
     }
+    
+    bookList.add(book);
+    System.out.println("대여가 완료되었습니다.");
   }
  
   public void list() {
-    System.out.println("[회원 리스트]");
+    System.out.println("[대여도서 정보]");
 
     Iterator<Book> iterator = bookList.iterator();
 
@@ -54,5 +58,4 @@ public class BookHandler {
           book.getRegisteredDate());
     }
   }
-  
 }
