@@ -16,7 +16,26 @@ public class MemberHandler {
     System.out.println("[회원 가입]");
 
     Member member = new Member();
-    member.setNo(Prompt.inputInt("회원번호 : "));
+    while (true) {
+      int count = 0;
+      String id = Prompt.inputString("회원번호 : ");
+      for (int i = 0; i < memberList.size(); i++) {
+        if (id.equals(memberList.get(i).getId())) {
+          count++;
+          System.out.println("회원번호 중복입니다. 다시 입력해주세요.");
+          break;
+        } // end if
+      } // end for
+      if(count==0) {
+        member.setId(id);
+        break;
+      }
+    } // end while
+
+    if (member == null) {
+      System.out.println("해당 번호의 회원이 없습니다.");
+      return;
+    }
     member.setName(Prompt.inputString("이름 : "));
     member.setAge(Prompt.inputInt("나이 : "));
     member.setGender(Prompt.inputString("성별(남자/여자) : "));
@@ -37,7 +56,7 @@ public class MemberHandler {
     while (iterator.hasNext()) {
       Member member = iterator.next();
       System.out.printf("%d, %s, %s, %s, %s\n",
-          member.getNo(),
+          member.getId(),
           member.getName(),
           member.getGender(),
           member.getTel(),
@@ -56,17 +75,17 @@ public class MemberHandler {
 
   public void detail() {
     System.out.println("[회원 상세정보]");
-    int no = Prompt.inputInt("회원번호 : ");
-    Member member = findByNo(no);
+    String id = Prompt.inputString("회원번호 : ");
+    Member member = findById(id);
 
     if (member == null) {
       System.out.println("해당 번호의 회원이 없습니다.");
       return;
     }
 
-    System.out.printf("회원번호: %s\n", member.getNo());
+    System.out.printf("회원번호: %s\n", member.getId());
     System.out.printf("이름: %s\n", member.getName());
-    System.out.printf("나이: %s\n", member.getAge());
+    System.out.printf("나이: %d\n", member.getAge());
     System.out.printf("성별: %s\n", member.getGender());
     System.out.printf("이메일: %s\n", member.getEmail());
     System.out.printf("전화: %s\n", member.getTel());
@@ -75,8 +94,8 @@ public class MemberHandler {
 
   public void update() {
     System.out.println("[회원정보 수정]");
-    int no = Prompt.inputInt("회원번호 : ");
-    Member member = findByNo(no);
+    String id = Prompt.inputString("회원번호 : ");
+    Member member = findById(id);
 
     if (member == null) {
       System.out.println("존재하지 않는 회원입니다.");
@@ -113,8 +132,8 @@ public class MemberHandler {
 
   public void delete() {
     System.out.println("[회원 삭제]");
-    int no = Prompt.inputInt("회원번호 : ");
-    int index = indexOf(no);
+    String id = Prompt.inputString("회원번호 : ");
+    int index = indexOf(id);
 
     if (index == -1) {
       System.out.println("존재하지 않는 회원입니다.");
@@ -131,20 +150,20 @@ public class MemberHandler {
     System.out.println("삭제되었습니다.\n그동안 이용해 주셔서 감사합니다.");
   }
 
-  private Member findByNo(int no) {
+  private Member findById(String id) {
     for (int i = 0; i < memberList.size(); i++) {
       Member member = memberList.get(i);
-      if (member.getNo() == no) {
+      if (member.getId() == id) {
         return member;
       }
     }
     return null;
   }
 
-  private int indexOf(int no) {
+  private int indexOf(String id) {
     for (int i = 0; i < memberList.size(); i++) {
       Member member = memberList.get(i);
-      if (member.getNo() == no) {
+      if (member.getId() == id) {
         return i;
       }
     }
