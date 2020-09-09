@@ -3,15 +3,40 @@
  */
 package mini.project;
 
+import java.util.LinkedList;
+import java.util.List;
+import mini.project.domain.Member;
+import mini.project.handler.MemberHandler;
+import mini.project.util.Prompt;
+
 public class App {
-  public String getGreeting() {
-    return "Hello bro.";
-  }
 
   public static void main(String[] args) {
-    System.out.println("What's up!");
-    System.out.println("노놉");
-    System.out.println("아으");
-     
+
+    List<Member> memberList = new LinkedList<>();
+    MemberHandler memberHandler = new MemberHandler(memberList);
+
+    System.out.println("안녕하십니까? \n비트도서관 대여관리 시스템 입니다.");
+    System.out.println();
+    loop:
+      while (true) {
+        String command = Prompt.inputString("명령을 입력하여 주세요 > ");
+
+        switch (command) {
+          case "/member/add": memberHandler.add(); break;
+          case "/member/list": memberHandler.list(); break;
+          case "/member/detail": memberHandler.detail(); break;
+          case "/member/update": memberHandler.update(); break;
+          case "/member/delete": memberHandler.delete(); break;
+
+          case "종료" :
+            System.out.println("이용해 주셔서 감사합니다.");
+            break loop;
+          default:
+            System.out.println("존재하지 않는 명령입니다.\n다시 입력해주세.");
+        }
+        System.out.println();
+      }
+    Prompt.close();
   }
 }
