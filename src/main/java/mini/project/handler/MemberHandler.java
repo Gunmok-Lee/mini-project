@@ -158,6 +158,18 @@ public class MemberHandler {
     System.out.println("삭제되었습니다.\n그동안 이용해 주셔서 감사합니다.");
   }
 
+  public void searchId() {
+    System.out.println("[아이디 찾기]");
+    String name = Prompt.inputString("이름 : ");
+    String email = Prompt.inputString("이메일 : ");
+
+
+  }
+
+  public void searchPassword() {
+
+  }
+
   public Member findByName(String name) {
     for (int i = 0; i < memberList.size(); i++) {
       Member member = memberList.get(i);
