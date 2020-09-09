@@ -28,7 +28,7 @@ public class App {
       while (true) {
         System.out.println("1: xx, 2: xx, 3: xx, 4: xx, 5: xx, 6: xx\n"
             + "7: 회원가입, 8: 회원리스트, 9: 회원상세조회, 10: 회원정보수정,"
-            + " 11: 회원탈퇴, 0: 종료");
+            + " 11: 회원탈퇴, 12: 아이디찾기, 13: 패스워드찾기, 0: 종료");
         String command = Prompt.inputString("명령을 입력하세요. > ");
 
 
@@ -42,6 +42,8 @@ public class App {
           case "9": memberHandler.detail(); break;
           case "10": memberHandler.update(); break;
           case "11": memberHandler.delete(); break;
+          case "12": memberHandler.searchId(); break;
+          case "13": memberHandler.searchPassword(); break;
 
           case "0" :
             System.out.println("이용해 주셔서 감사합니다.");
