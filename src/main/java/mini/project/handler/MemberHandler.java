@@ -111,7 +111,7 @@ public class MemberHandler {
       genderLabel = "여자";
     }
     int gender = Prompt.inputInt(
-        String.format("성별 : [%s] =>  ", genderLabel));
+        String.format("성별 : [%s] (1: 남자/2: 여자) =>  ", genderLabel));
     String email = Prompt.inputString(
         String.format("이메일 : [%s] => ", member.getEmail()));
     String newPassword = Prompt.inputString("패스워드 :  => ");
@@ -166,7 +166,7 @@ public class MemberHandler {
       Member member = memberList.get(i);
       if (name.equals(member.getName())) {
         if(email.equals(member.getEmail())) {
-          System.out.printf("아이디는 : %s 입니다.", member.getId());
+          System.out.printf("%s 님의 아이디는 : %s 입니다.",name, member.getId());
           return;
         } else {
           System.out.println("잘못된 이메일입니다.");
@@ -174,7 +174,7 @@ public class MemberHandler {
         }
       }
     }
-    System.out.println("잘못된 이름입니다.");
+    System.out.println("회원으로 등록된 이름이 아닙니다.");
     return;
   }
 
@@ -191,6 +191,7 @@ public class MemberHandler {
           if (email.equals(member.getEmail())) {
             String newPassword = Prompt.inputString("새로운 비밀번호 입력 : ");
             member.setPassword(newPassword);
+            System.out.println("비밀번호가 변경되었습니다.");
             return member;
           } else {
             System.out.println("잘못된 이메일입니다.");
