@@ -71,10 +71,9 @@ public class MemberHandler {
     System.out.println("[회원 상세정보]");
     String id = Prompt.inputString("아이디 : ");
     String password = Prompt.inputString("패스워드 : ");
-    Member member = findByPassword(id, password);
+    Member member = findInformation(id, password);
 
     if (member == null) {
-      System.out.println("아이디 또는 패스워드가 잘못 입력되었습니다.");
       return;
     }
 
@@ -91,24 +90,24 @@ public class MemberHandler {
   public void update() {
     System.out.println("[회원정보 수정]");
     String id = Prompt.inputString("아이디 : ");
-    Member member = findById(id);
+    String password = Prompt.inputString("패스워드 : ");
+    Member member = findInformation(id, password);
 
     if (member == null) {
-      System.out.println("존재하지 않는 아이디입니다.");
       return;
     }
 
     String name = Prompt.inputString(
-        String.format("이름(%s)? ", member.getName()));
+        String.format("이름 : [%s] => ", member.getName()));
     int age = Prompt.inputInt(
-        String.format("나이(%d)? ", member.getAge()));
+        String.format("나이 : [%d] => ", member.getAge()));
     String gender = Prompt.inputString(
-        String.format("성별(%s)? ", member.getGender()));
+        String.format("성별 : [%s] =>  ", member.getGender()));
     String email = Prompt.inputString(
-        String.format("이메일(%s)? ", member.getEmail()));
-    String password = Prompt.inputString("암호? ");
+        String.format("이메일 : [%s] => ", member.getEmail()));
+    String newPassword = Prompt.inputString("패스워드 :  => ");
     String tel = Prompt.inputString(
-        String.format("전화(%s)? ", member.getTel()));
+        String.format("전화번호 : [%s] => ", member.getTel()));
 
     String response = Prompt.inputString("정말 변경하시겠습니까?(y/N) ");
     if (!response.equalsIgnoreCase("y")) {
@@ -120,7 +119,7 @@ public class MemberHandler {
     member.setAge(age);
     member.setGender(gender);
     member.setEmail(email);
-    member.setPassword(password);
+    member.setPassword(newPassword);
     member.setTel(tel);
 
     System.out.println("회원정보를  변경하였습니다.");
@@ -129,10 +128,14 @@ public class MemberHandler {
   public void delete() {
     System.out.println("[회원 삭제]");
     String id = Prompt.inputString("아이디 : ");
-    int index = indexOf(id);
+    String password = Prompt.inputString("패스워드 : ");
+    int index = indexOf(id, password);
 
     if (index == -1) {
-      System.out.println("존재하지 않는 아이디입니다.");
+      return;
+    }
+
+    if (index == -2) {
       return;
     }
 
@@ -146,6 +149,7 @@ public class MemberHandler {
     System.out.println("삭제되었습니다.\n그동안 이용해 주셔서 감사합니다.");
   }
 
+  @SuppressWarnings("unused")
   private Member findById(String id) {
     for (int i = 0; i < memberList.size(); i++) {
       Member member = memberList.get(i);
@@ -156,24 +160,36 @@ public class MemberHandler {
     return null;
   }
 
-  private Member findByPassword(String id, String password) {
-    for (int i = 0; i < memberList.size(); i++) {
-      Member member = memberList.get(i);
-      if (id.equals(member.getId()) && password.equals(member.getPassword())) {
-        return member;
-      }
-    }
-    return null;
-  }
-
-  private int indexOf(String id) {
+  private Member findInformation(String id, String password) {
     for (int i = 0; i < memberList.size(); i++) {
       Member member = memberList.get(i);
       if (id.equals(member.getId())) {
-        return i;
+        if(password.equals(member.getPassword())) {
+          return member;
+        } else {
+          System.out.println("잘못된 패스워드입니다.");
+          return null;
+        }
       }
     }
-    return -1;
+    System.out.println("존재하지 않는 아이디입니다.");
+    return null;
+  }
+
+  private int indexOf(String id, String password) {
+    for (int i = 0; i < memberList.size(); i++) {
+      Member member = memberList.get(i);
+      if (id.equals(member.getId())) {
+        if(password.equals(member.getPassword())) {
+          return i;
+        } else {
+          System.out.println("잘못된 패스워드입니다.");
+          return -1;
+        }
+      }
+    }
+    System.out.println("존재하지 않는 아이디입니다.");
+    return -2;
   }
 
 }

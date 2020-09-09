@@ -20,16 +20,20 @@ public class App {
     System.out.println();
     loop:
       while (true) {
+        System.out.println("1: xx, 2: xx, 3: xx, 4: xx, 5: xx, 6: xx\n"
+            + "7: 회원가입, 8: 회원리스트, 9: 회원상세조회, 10: 회원정보수정,"
+            + " 11: 회원탈퇴, 0: 종료");
         String command = Prompt.inputString("명령을 입력하세요. > ");
 
-        switch (command) {
-          case "/member/add": memberHandler.add(); break;
-          case "/member/list": memberHandler.list(); break;
-          case "/member/detail": memberHandler.detail(); break;
-          case "/member/update": memberHandler.update(); break;
-          case "/member/delete": memberHandler.delete(); break;
 
-          case "종료" :
+        switch (command) {
+          case "7": memberHandler.add(); break;
+          case "8": memberHandler.list(); break;
+          case "9": memberHandler.detail(); break;
+          case "10": memberHandler.update(); break;
+          case "11": memberHandler.delete(); break;
+
+          case "0" :
             System.out.println("이용해 주셔서 감사합니다.");
             break loop;
           default:
