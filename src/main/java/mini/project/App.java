@@ -16,9 +16,11 @@ public class App {
     List<Member> memberList = new LinkedList<>();
     MemberHandler memberHandler = new MemberHandler(memberList);
 
+    System.out.println("안녕하십니까? \n비트도서관 대여관리 시스템 입니다.");
+    System.out.println();
     loop:
       while (true) {
-        String command = Prompt.inputString("명령을 입력하세요 > ");
+        String command = Prompt.inputString("명령을 입력하여 주세요 > ");
 
         switch (command) {
           case "/member/add": memberHandler.add(); break;
@@ -27,12 +29,11 @@ public class App {
           case "/member/update": memberHandler.update(); break;
           case "/member/delete": memberHandler.delete(); break;
 
-          case "quit" :
-          case "exit" :
+          case "종료" :
             System.out.println("이용해 주셔서 감사합니다.");
             break loop;
           default:
-            System.out.println("존재하지 않는 명령입니다.");
+            System.out.println("존재하지 않는 명령입니다.\n다시 입력해주세.");
         }
         System.out.println();
       }

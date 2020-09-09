@@ -19,7 +19,7 @@ public class MemberHandler {
     member.setNo(Prompt.inputInt("회원번호 : "));
     member.setName(Prompt.inputString("이름 : "));
     member.setAge(Prompt.inputInt("나이 : "));
-    member.setGender(Prompt.inputString("성별(M/W) : "));
+    member.setGender(Prompt.inputString("성별(남자/여자) : "));
     member.setEmail(Prompt.inputString("이메일 : "));
     member.setPassword(Prompt.inputString("패스워드 : "));
     member.setTel(Prompt.inputString("전화번호 : "));
