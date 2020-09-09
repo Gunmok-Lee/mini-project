@@ -1,7 +1,6 @@
 package mini.project.util;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class Prompt {

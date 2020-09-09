@@ -26,24 +26,22 @@ public class App {
     System.out.println();
     loop:
       while (true) {
-        System.out.println("1: 회원가입, 2: 도서대여, 3: 회원상세조회, 4: 회원정보수정\n"
-            + " 5: , 6: xx\n, 11: 회원탈퇴, 0: 종료");
+        System.out.println("1: 회원가입, 2: 회원목록 , 3: 회원상세조회, 4: 회원정보수정\n"
+            + "5: 도서대여 , 6: 대여도서정보 , 9: 회원탈퇴, 0: 종료");
         
         String command = Prompt.inputString("명령을 입력하세요. > ");
 
 
         switch (command) {
-          case "1": bookHandler.add(); break;
-          case "2": bookHandler.list(); break;
-          case "3": bookHandler.update(); break;
-
-          case "7": memberHandler.add(); break;
-          case "8": memberHandler.list(); break;
-          case "9": memberHandler.detail(); break;
-          case "10": memberHandler.update(); break;
-          case "11": memberHandler.delete(); break;
-          case "12": memberHandler.searchId(); break;
-          case "13": memberHandler.searchPassword(); break;
+          case "1": memberHandler.add(); break;
+          case "2": memberHandler.list(); break;
+          case "3": memberHandler.detail(); break;
+          case "4": memberHandler.update(); break;
+          case "5": bookHandler.add(); break;
+          case "6": bookHandler.list(); break;
+          case "9": memberHandler.delete(); break;
+          case "10": memberHandler.searchId(); break;
+          case "11": memberHandler.searchPassword(); break;
 
           case "0" :
             System.out.println("이용해 주셔서 감사합니다.");
