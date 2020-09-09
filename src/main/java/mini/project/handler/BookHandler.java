@@ -1,5 +1,7 @@
 package mini.project.handler;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
 import mini.project.domain.Book;
@@ -11,6 +13,7 @@ public class BookHandler {
   List<Book> bookList;
   Member member;
   MemberHandler memberHandler;
+  Book book;
   
   public BookHandler(MemberHandler memberHandler) {
     this.memberHandler = memberHandler;
@@ -32,7 +35,7 @@ public class BookHandler {
       if (id.length() == 0) { // id 미 입력 경우
         System.out.println("도서 대여를 취소합니다.");
         return;
-      } else if (memberHandler.findByName(id) != null) { 
+      } else if (memberHandler.findById(id) != null) { 
         member.setId(id); // 등록된 아이디와 일치할 경우
         System.out.printf("%s님, 대여가 완료되었습니다", id);
         break;
@@ -59,5 +62,27 @@ public class BookHandler {
           book.getRegisteredDate());
           member.getName();
     }
+  }
+  
+  public void update() {
+    System.out.println("[대여정보 수정]");
+    
+    int bookNo = Prompt.inputInt(
+        String.format("도서 번호 : [%d] => ", book.getBookNo()));
+    String bookName = Prompt.inputString(
+        String.format("도서명 : [%s] => ", book.getBookName()));
+    String company = Prompt.inputString(
+        String.format("출판사 : [%s] =>  ", book.getCompany()));
+    String author = Prompt.inputString(
+        String.format("저자 : [%s] => ", book.getAuthor()));
+    Date date = Prompt.inputDate(
+        String.format("대여 일자 : [%s] => ", book.changeDate());
+    
+    book.setBookNo(bookNo);
+    book.setBookName(bookName);
+    book.setCompany(company);
+    book.setAuthor(author);
+    
+    System.out.println("회원정보를 변경하였습니다.");
   }
 }
