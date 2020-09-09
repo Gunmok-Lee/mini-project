@@ -1,14 +1,14 @@
 package mini.project.handler;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 import mini.project.domain.Book;
 import mini.project.domain.Member;
 import mini.project.util.Prompt;
 
 public class BookHandler {
   
-  ArrayList<Book> bookList = new ArrayList<>();
+  List<Book> bookList;
   Member member;
   MemberHandler memberHandler;
   
@@ -38,10 +38,21 @@ public class BookHandler {
       System.out.println("등록된 회원이 아닙니다."); // 등록된 회원과 이름이 일치하지 않을 경우
     }
   }
-  
+ 
   public void list() {
-    System.out.println("[대여 정보]");
-    Object[] books = 
+    System.out.println("[회원 리스트]");
 
+    Iterator<Book> iterator = bookList.iterator();
+
+    while (iterator.hasNext()) {
+      Book book = iterator.next();
+      System.out.printf("%d, %s, %s, %s, %s\n",
+          book.getBookNo(),
+          book.getBookName(),
+          book.getCompany(),
+          book.getAuthor(),
+          book.getRegisteredDate());
+    }
   }
+  
 }
