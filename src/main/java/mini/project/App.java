@@ -39,7 +39,7 @@ public class App {
               case "2" : bookHandler.list(); break;
               case "3" : bookHandler.update(); break;
               default :
-                System.out.println("존재하지 않는 명령입니다.\n다시 입력해주세요.");
+                System.out.println("존재하지 않는 명령입니다. 초기화면으로 돌아갑니다.");
             }
           } break;
           case "2": {
@@ -55,7 +55,7 @@ public class App {
               case "6": memberHandler.searchId(); break;
               case "7": memberHandler.searchPassword(); break;
               default :
-                System.out.println("존재하지 않는 명령입니다.\n다시 입력해주세요.");
+                System.out.println("존재하지 않는 명령입니다. 초기화면으로 돌아갑니다.");
             }
           } break;
           case "3": {
@@ -64,7 +64,7 @@ public class App {
             switch (commandRent) {
               case "1" : bookHandler.add();break;
               default :
-                System.out.println("존재하지 않는 명령입니다.\n다시 입력해주세요.");
+                System.out.println("존재하지 않는 명령입니다. 초기화면으로 돌아갑니다.");
             }
           } break;
 
