@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import mini.project.domain.Book;
 import mini.project.domain.Member;
+import mini.project.handler.BookHandler;
 import mini.project.handler.MemberHandler;
 import mini.project.util.Prompt;
 
@@ -17,13 +18,16 @@ public class App {
     List<Member> memberList = new LinkedList<>();
     MemberHandler memberHandler = new MemberHandler(memberList);
 
-    
+    List<Book> bookList = new LinkedList<>();
+    BookHandler bookHandler = new BookHandler(bookList, memberHandler);
+
+
     System.out.println("안녕하십니까? \n비트도서관 대여관리 시스템 입니다.");
     System.out.println();
     loop:
       while (true) {
-        System.out.println("1: xx, 2: xx, 3: xx, 4: xx, 5: xx, 6: xx\n"
-            + "7: 회원가입, 8: 회원리스트, 9: 회원상세조회, 10: 회원정보수정,"
+        System.out.println("1: 회원가입, 2: 도서대여, 3: 회원상세조회, 4: 회원정보수정\n"
+            + " 5: , 6: xx\n, ,"
             + " 11: 회원탈퇴, 0: 종료");
         String command = Prompt.inputString("명령을 입력하세요. > ");
 
@@ -32,7 +36,7 @@ public class App {
           case "1": bookHandler.add(); break;
           case "2": bookHandler.list(); break;
           case "3": bookHandler.update(); break;
-          
+
           case "7": memberHandler.add(); break;
           case "8": memberHandler.list(); break;
           case "9": memberHandler.detail(); break;

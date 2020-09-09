@@ -1,6 +1,7 @@
 package mini.project.domain;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 public class Book {
   private int bookNo; // 도서번호
@@ -8,6 +9,7 @@ public class Book {
   private String company; // 출판사
   private String author; // 저자
   private Date registeredDate; // 대여 일자
+  private Date currentDate; // 대여 일자
   
   public int getBookNo() {
     return bookNo;
@@ -38,5 +40,13 @@ public class Book {
   }
   public void setRegisteredDate(Date registeredDate) {
     this.registeredDate = registeredDate;
+  }
+  public void setChangeDate(Date registeredDate) { // Date => String 변경
+    Date dates = new Date(System.currentTimeMillis());
+    String currentDate = new SimpleDateFormat("yyyy-MM-dd").format(dates);
+    this.currentDate = registeredDate;
+  }
+  public Object getChangeDate() {
+    return currentDate;
   }
 } 

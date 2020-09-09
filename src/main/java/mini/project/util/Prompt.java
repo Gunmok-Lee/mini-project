@@ -1,6 +1,7 @@
 package mini.project.util;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class Prompt {
@@ -18,7 +19,7 @@ public class Prompt {
   public static Date inputDate(String title) {
     return Date.valueOf(inputString(title));
   }
-
+  
   public static void close() {
     scanner.close();
   }
