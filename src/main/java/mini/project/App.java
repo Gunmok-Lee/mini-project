@@ -13,5 +13,6 @@ public class App {
     System.out.println("오류뜸?");
     System.out.println("연습");
     System.out.println("What the....");
+    System.out.println("노놉");
   }
 }
