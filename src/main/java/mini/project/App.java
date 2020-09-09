@@ -30,7 +30,7 @@ public class App {
         String command = Prompt.inputString("명령을 입력하세요. > ");
 
         switch (command) {
-          case "1" :
+          case "1" : {
             System.out.println("[도서관리]\n"
                 + "1: 도서등록, 2: 도서리스트, 3: 도서정보수정, 4: 도서정보삭제");
             String commandBook = Prompt.inputString("도서관리 명령을 입력하세요. > ");
@@ -41,7 +41,8 @@ public class App {
               default :
                 System.out.println("존재하지 않는 명령입니다.\n다시 입력해주세요.");
             }
-          case "2":
+          } break;
+          case "2": {
             System.out.println("[회원관리]\n"
                 + "1: 회원가입, 2: 회원간이명부, 3: 회원상세정보, 4: 회원정보수정, 5: 회원삭제, 6: 아이디찾기, 7: 패스워드찾기");
             String commandMember = Prompt.inputString("회원관리 명령을 입력하세요. > ");
@@ -56,7 +57,8 @@ public class App {
               default :
                 System.out.println("존재하지 않는 명령입니다.\n다시 입력해주세요.");
             }
-          case "3":
+          } break;
+          case "3": {
             System.out.println();
             String commandRent = Prompt.inputString("대여관리 명령을 입력하세요. > ");
             switch (commandRent) {
@@ -64,12 +66,13 @@ public class App {
               default :
                 System.out.println("존재하지 않는 명령입니다.\n다시 입력해주세요.");
             }
+          } break;
 
-          case "0" :
-            System.out.println("이용해 주셔서 감사합니다.");
-            break loop;
+          case "0" : {
+            System.out.println("이용해 주셔서 감사합니다.");}
+          break loop;
           default:
-            System.out.println("존재하지 않는 명령입니다.\n다시 입력해주세요.");
+            System.out.println("존재하지 않는 명령입니다.다시 입력해주세요.");
         }
         System.out.println();
       }
