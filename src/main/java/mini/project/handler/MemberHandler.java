@@ -162,12 +162,48 @@ public class MemberHandler {
     System.out.println("[아이디 찾기]");
     String name = Prompt.inputString("이름 : ");
     String email = Prompt.inputString("이메일 : ");
-
-
+    for (int i = 0; i < memberList.size(); i++) {
+      Member member = memberList.get(i);
+      if (name.equals(member.getName())) {
+        if(email.equals(member.getEmail())) {
+          System.out.printf("아이디는 : %s 입니다.", member.getId());
+          return;
+        } else {
+          System.out.println("잘못된 이메일입니다.");
+          return;
+        }
+      }
+    }
+    System.out.println("잘못된 이름입니다.");
+    return;
   }
 
-  public void searchPassword() {
 
+  public Member searchPassword() {
+    System.out.println("[비밀번호 찾기]");
+    String id = Prompt.inputString("아이디 : ");
+    String name = Prompt.inputString("이름 : ");
+    String email = Prompt.inputString("이메일 : ");
+    for (int i = 0; i < memberList.size(); i++) {
+      Member member = memberList.get(i);
+      if (id.equals(member.getId())) {
+        if (name.equals(member.getName())) {
+          if (email.equals(member.getEmail())) {
+            String newPassword = Prompt.inputString("새로운 비밀번호 입력 : ");
+            member.setPassword(newPassword);
+            return member;
+          } else {
+            System.out.println("잘못된 이메일입니다.");
+          }
+          return null;
+        } else {
+          System.out.println("잘못된 이름입니다.");
+          return null;
+        }
+      }
+    }
+    System.out.println("존재하지 않는 아이디입니다.");
+    return null;
   }
 
   public Member findByName(String name) {
@@ -189,6 +225,7 @@ public class MemberHandler {
     }
     return null;
   }
+
 
   private Member findInformation(String id, String password) {
     for (int i = 0; i < memberList.size(); i++) {
