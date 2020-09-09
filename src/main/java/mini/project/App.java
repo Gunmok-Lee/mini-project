@@ -11,6 +11,5 @@ public class App {
   public static void main(String[] args) {
     System.out.println("What's up!");
     System.out.println("오류뜸?");
-    System.out.println("연습");
   }
 }
