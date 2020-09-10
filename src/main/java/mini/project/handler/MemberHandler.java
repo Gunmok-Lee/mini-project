@@ -14,7 +14,7 @@ public class MemberHandler {
 
   public void add() {
     System.out.println("[회원가입]");
- 
+
     Member member = new Member();
     while (true) {
       int count = 0;
@@ -99,7 +99,7 @@ public class MemberHandler {
     if (member == null) {
       return;
     }
- 
+
     String name = Prompt.inputString(
         String.format("이름 : [%s] => ", member.getName()));
     int age = Prompt.inputInt(
@@ -182,12 +182,12 @@ public class MemberHandler {
   public Member searchPassword() {
     System.out.println("[비밀번호 찾기]");
     String id = Prompt.inputString("아이디 : ");
-    String name = Prompt.inputString("이름 : ");
-    String email = Prompt.inputString("이메일 : ");
     for (int i = 0; i < memberList.size(); i++) {
       Member member = memberList.get(i);
       if (id.equals(member.getId())) {
+        String name = Prompt.inputString("이름 : ");
         if (name.equals(member.getName())) {
+          String email = Prompt.inputString("이메일 : ");
           if (email.equals(member.getEmail())) {
             String newPassword = Prompt.inputString("새로운 비밀번호 입력 : ");
             member.setPassword(newPassword);

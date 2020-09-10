@@ -43,6 +43,7 @@ public class RentHandler {
     System.out.println("도서를 대여하였습니다.");
   }
 
+
   public void delete() {
     System.out.println("[도서 반납]");
     int bookNo = Prompt.inputInt("도서 번호: ");
@@ -85,5 +86,6 @@ public class RentHandler {
       }
     }
     return -1;
+
   }
 }
