@@ -14,7 +14,7 @@ public class RentHandler {
     this.memberHandler = memberHandler;
     this.bookHandler = bookHandler;
   }
-
+ 
   public void add() {
     System.out.println("[도서 대여]");
 
