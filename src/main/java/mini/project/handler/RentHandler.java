@@ -17,42 +17,37 @@ public class RentHandler {
 
   public void add() {
     System.out.println("[도서 대여]");
+    int bookNo = Prompt.inputInt("도서 번호: ");
+    int index = indexOf(bookNo);
+    Book book = bookList.get(index);
 
-    Book rent = new Book();
-    rent.setRentDate(Prompt.inputDate("대여 일자: "));
-
-    while(true) {
-      int no = Prompt.inputInt("도서 번호: ");
-
-      if(Integer.toString(no) == null) {
-        System.out.println("도서 번호를 입력하세요.");
-        continue;
-      } else {
-        break;
-      }
+    if(index == -1) {
+      System.out.println("해당 도서 번호가 없습니다.");
+      return;
     }
 
-    while (true) {
-      String id = Prompt.inputString("아이디: ");
-
-      if (id.length() == 0) { // id 미 입력 경우
-        System.out.println("아이디를 입력하세요.");
-        continue;
-      } else if (memberHandler.findById(id) != null) {
-        System.out.printf("%s님은 대여가 가능합니다\n", id);
-        break;
-      }
+    String id = Prompt.inputString("아이디: ");
+    if (memberHandler.findById(id) == null) {
       System.out.println("등록된 회원이 아닙니다.");
+      return;
     }
 
-    System.out.println("대여가 완료되었습니다.");
-    bookList.add(rent);
+    String response = Prompt.inputString("대여하시겠습니까?(y/N) ");
+    if(!response.equalsIgnoreCase("y")) {
+      System.out.println("도서 대여를 취소하였습니다.");
+      return;
+    }
+    book.setRentOwner(id);
+    book.setRentDate(new java.sql.Date(System.currentTimeMillis()));
+    book.setRentAble("no");
+    System.out.println("도서를 대여하였습니다.");
   }
 
   public void delete() {
     System.out.println("[도서 반납]");
     int bookNo = Prompt.inputInt("도서 번호: ");
     int index = indexOf(bookNo);
+    Book book = bookList.get(index);
 
     if(index == -1) {
       System.out.println("해당 도서 번호가 없습니다.");
@@ -65,7 +60,6 @@ public class RentHandler {
       return;
     }
 
-    Book book = bookList.get(index);
     book.setRentOwner(null);
     book.setRentDate(null);
     book.setRentAble("ok");
