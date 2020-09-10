@@ -3,7 +3,6 @@ package mini.project.handler;
 import java.util.Iterator;
 import java.util.List;
 import mini.project.domain.Book;
-import mini.project.domain.Rent;
 import mini.project.util.Prompt;
 
 public class BookHandler {
