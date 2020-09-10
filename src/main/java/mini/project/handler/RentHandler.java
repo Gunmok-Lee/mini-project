@@ -15,28 +15,34 @@ public class RentHandler {
     this.memberHandler = memberHandler;
   }
 
-//도서 번호 -> 
+  //도서 번호 ->
   public void rent() {
     System.out.println("[도서 대여]");
 
     Object object = new Object();
-    
+
     while(true) {
       int no = Integer.((Prompt.inputString("도서 번호: "));
-      
+
       if(no == null) {
-        
+
       }
     }
-    
-    
-   
-    
-    
+
+
+
+
+
   }
 
   public void searchRentAble() {
     System.out.println("[대여 가능 도서목록]");
-    bookHandler.findByBookInfo();
+    bookHandler.findByBookInfo("ok");
+  }
+
+  public void rentImpossible() {
+    System.out.println("[대여중 도서목록]");
+    bookHandler.findByBookInfo("no");
+
   }
 }

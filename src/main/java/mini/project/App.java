@@ -72,6 +72,7 @@ public class App {
             switch (commandRent) {
               case "1" : bookHandler.add();break;
               case "3" : rentHandler.searchRentAble();break;
+              case "4" : rentHandler.rentImpossible();break;
               default :
                 System.out.println("존재하지 않는 명령입니다. 초기 화면으로 돌아갑니다.");
             }

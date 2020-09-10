@@ -114,11 +114,10 @@ public class BookHandler {
     return null;
   }
 
-  public void findByBookInfo() {
+  public void findByBookInfo(String str) {
     for (int i = 0; i < bookList.size(); i++) {
-      String able = "ok";
       Book book = bookList.get(i);
-      if (able.equalsIgnoreCase(book.getRentAble())) {
+      if (book.getRentAble() == str) {
         System.out.println("==========================");
         System.out.printf("도서번호: %s\n", book.getBookNo());
         System.out.printf("도서명: %s\n", book.getBookName());
@@ -126,8 +125,8 @@ public class BookHandler {
         System.out.printf("저자: %s\n", book.getAuthor());
         return;
       }
-      return;
     }
+    return;
   }
 
   private int indexOf(int no) {
