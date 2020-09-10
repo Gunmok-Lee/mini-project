@@ -14,7 +14,7 @@ public class RentHandler {
     this.memberHandler = memberHandler;
     this.bookHandler = bookHandler;
   }
- 
+
   public void add() {
     System.out.println("[도서 대여]");
 
@@ -29,7 +29,7 @@ public class RentHandler {
         continue;
       } else {
         break;
-      } 
+      }
     }
 
     while (true) {
@@ -53,19 +53,22 @@ public class RentHandler {
     System.out.println("[도서 반납]");
     int bookNo = Prompt.inputInt("도서 번호: ");
     int index = indexOf(bookNo);
-    
+
     if(index == -1) {
       System.out.println("해당 도서 번호가 없습니다.");
       return;
     }
-    
+
     String response = Prompt.inputString("반납하시겠습니까?(y/N) ");
     if(!response.equalsIgnoreCase("y")) {
       System.out.println("도서 반납을 취소하였습니다.");
       return;
     }
-    
-    bookList.remove(index);
+
+    Book book = bookList.get(index);
+    book.setRentOwner(null);
+    book.setRentDate(null);
+    book.setRentAble("ok");
     System.out.println("도서를 반납하였습니다.");
   }
 
@@ -79,7 +82,7 @@ public class RentHandler {
     bookHandler.findRentingInfo();
 
   }
-  
+
   private int indexOf(int no) {
     for (int i = 0; i < bookList.size(); i++) {
       Book book = bookList.get(i);
