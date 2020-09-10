@@ -2,6 +2,7 @@ package mini.project.handler;
 
 import java.util.List;
 import mini.project.domain.Rent;
+import mini.project.util.Prompt;
 public class RentHandler {
 
   List<Rent> rentList;
@@ -14,10 +15,19 @@ public class RentHandler {
     this.memberHandler = memberHandler;
   }
 
+//도서 번호 -> 
   public void rent() {
     System.out.println("[도서 대여]");
 
     Object object = new Object();
+    
+    while(true) {
+      int no = Prompt.inputString("도서 번호: ") 
+    }
+    
+    
+   
+    
     
   }
 }
