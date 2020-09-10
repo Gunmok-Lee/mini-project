@@ -60,7 +60,7 @@ public class App {
           } break;
           case "3": {
             System.out.println("[대여 관리]\n"
-                + "1: 대여하기, 2: 반납하기, 3:대여 가능 도서조회, 4: 대여 중인 도서조회, ");
+                + "1: 대여하기, 2: 반납하기, 3: 대여 가능 도서조회, 4: 대여 중인 도서조회, ");
             String commandRent = Prompt.inputString("대여 관리 명령을 입력하세요. > ");
             switch (commandRent) {
               case "1" : bookHandler.add();break;
