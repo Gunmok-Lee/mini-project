@@ -124,16 +124,6 @@ public class BookHandler {
     rentList.add(rent);
   }
 
-  public void searchRentAble() {
-    System.out.println("[대여 가능 도서목록]");
-    findByBookInfo();
-  }
-
-  public void rentImpossible() {
-    System.out.println("[대여중 도서목록]");
-    findByBookInfo("no");
-
-  }
 
   private Book findByNo(int no) {
     for (int i = 0; i < bookList.size(); i++) {

@@ -9,6 +9,7 @@ import mini.project.domain.Book;
 import mini.project.domain.Member;
 import mini.project.handler.BookHandler;
 import mini.project.handler.MemberHandler;
+import mini.project.handler.RentHandler;
 import mini.project.util.Prompt;
 
 public class App {
@@ -20,6 +21,7 @@ public class App {
 
     List<Book> bookList = new LinkedList<>();
     BookHandler bookHandler = new BookHandler(bookList, memberHandler);
+    RentHandler rentHandler = new RentHandler(bookList, memberHandler, bookHandler);
 
     System.out.println("안녕하십니까? \n비트도서관 대여 관리 시스템 입니다.");
     System.out.println();
@@ -64,8 +66,8 @@ public class App {
             String commandRent = Prompt.inputString("대여 관리 명령을 입력하세요. > ");
             switch (commandRent) {
               case "1" : bookHandler.add();break;
-              case "3" : bookHandler.searchRentAble();break;
-              case "4" : bookHandler.rentImpossible();break;
+              case "3" : rentHandler.searchRentAble();break;
+              case "4" : rentHandler.rentImpossible();break;
               default :
                 System.out.println("존재하지 않는 명령입니다. 초기 화면으로 돌아갑니다.");
             }
