@@ -1,24 +1,24 @@
 package mini.project.handler;
 
 import java.util.List;
-import mini.project.domain.Rent;
+import mini.project.domain.Book;
 import mini.project.util.Prompt;
 public class RentHandler {
 
-  List<Rent> rentList;
+  List<Book> bookList;
   MemberHandler memberHandler;
   BookHandler bookHandler;
-  Rent rent;
   
-  public RentHandler(List<Rent> list, MemberHandler memberHandler, BookHandler bookHandler) {
-    this.rentList = list;
+  public RentHandler(List<Book> list, MemberHandler memberHandler, BookHandler bookHandler) {
+    this.bookList = list;
     this.memberHandler = memberHandler;
+    this.bookHandler = bookHandler;
   }
   
   public void add() {
     System.out.println("[도서 대여]");
     
-    Rent rent = new Rent();
+    Book rent = new Book();
     rent.setRentDate(Prompt.inputDate("대여 일자: "));
 
     while(true) {
@@ -46,7 +46,7 @@ public class RentHandler {
       }
       
     System.out.println("대여가 완료되었습니다.");
-    rentList.add(rent);
+    bookList.add(rent);
   }
   
   public void delete() {

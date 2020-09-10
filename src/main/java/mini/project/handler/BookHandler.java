@@ -3,6 +3,7 @@ package mini.project.handler;
 import java.util.Iterator;
 import java.util.List;
 import mini.project.domain.Book;
+import mini.project.domain.Rent;
 import mini.project.util.Prompt;
 
 public class BookHandler {
@@ -90,6 +91,50 @@ public class BookHandler {
     bookList.remove(index);
     System.out.println("도서 정보를 삭제하였습니다.");
   }
+  //-------------------------------------------------rent관련 메서드
+  public void rent() {
+    System.out.println("[도서 대여]");
+
+    Rent rent = new Rent();
+    rent.setRentDate(Prompt.inputDate("대여 일자: "));
+
+    while(true) {
+      int no = Prompt.inputInt("도서 번호: ");
+
+      if(Integer.toString(no) == null) {
+        System.out.println("도서 번호를 입력하세요.");
+        continue;
+      } else {
+        break;
+      }
+    }
+    while (true) {
+      String id = Prompt.inputString("아이디: ");
+
+      if (id.length() == 0) { // id 미 입력 경우
+        System.out.println("아이디를 입력하세요.");
+        continue;
+      } else if (memberHandler.findById(id) != null) {
+        System.out.printf("%s님은 대여가 가능합니다", id);
+        break;
+      }
+      System.out.println("아이디가 일치하지 않습니다.");
+    }
+
+    System.out.println("대여가 완료되었습니다.");
+    rentList.add(rent);
+  }
+
+  public void searchRentAble() {
+    System.out.println("[대여 가능 도서목록]");
+    findByBookInfo("ok");
+  }
+
+  public void rentImpossible() {
+    System.out.println("[대여중 도서목록]");
+    findByBookInfo("no");
+
+  }
 
   private Book findByNo(int no) {
     for (int i = 0; i < bookList.size(); i++) {
@@ -101,11 +146,10 @@ public class BookHandler {
     return null;
   }
 
-  public void findByBookInfo() {
+  public void findByBookInfo(String str) {
     for (int i = 0; i < bookList.size(); i++) {
-      String able = "ok";
       Book book = bookList.get(i);
-      if (able.equalsIgnoreCase(book.getRentAble())) {
+      if (book.getRentAble() == str) {
         System.out.println("==========================");
         System.out.printf("도서번호: %s\n", book.getBookNo());
         System.out.printf("도서명: %s\n", book.getBookName());
@@ -113,8 +157,8 @@ public class BookHandler {
         System.out.printf("저자: %s\n", book.getAuthor());
         return;
       }
-      return;
     }
+    return;
   }
 
   private int indexOf(int no) {

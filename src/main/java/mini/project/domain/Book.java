@@ -1,11 +1,15 @@
 package mini.project.domain;
 
+import java.sql.Date;
+
 public class Book {
   private int bookNo; // 도서번호
   private String bookName; // 도서이름
   private String company; // 출판사
   private String author; // 저자
-  private String rentAble;
+  private String rentAble;//대여가능여
+  private String rentOwner;//대여자
+  private Date rentDate;//대여일
 
   public int getBookNo() {
     return bookNo;
@@ -36,5 +40,17 @@ public class Book {
   }
   public void setRentAble(String rentAble) {
     this.rentAble = rentAble;
+  }
+  public Date getRentDate() {
+    return rentDate;
+  }
+  public void setRentDate(Date rentDate) {
+    this.rentDate = rentDate;
+  }
+  public String getRentOwner() {
+    return rentOwner;
+  }
+  public void setRentOwner(String rentOwner) {
+    this.rentOwner = rentOwner;
   }
 }
