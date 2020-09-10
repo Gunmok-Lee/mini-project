@@ -31,6 +31,7 @@ public class RentHandler {
         break;
       }
     }
+    
       while (true) {
         String id = Prompt.inputString("아이디: ");
 
@@ -46,6 +47,11 @@ public class RentHandler {
       
     System.out.println("대여가 완료되었습니다.");
     rentList.add(rent);
+  }
+  
+  public void delete() {
+    
+    
   }
   
   public void searchRentAble() {
