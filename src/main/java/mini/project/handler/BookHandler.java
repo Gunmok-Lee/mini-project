@@ -127,7 +127,7 @@ public class BookHandler {
 
   public void searchRentAble() {
     System.out.println("[대여 가능 도서목록]");
-    findByBookInfo("ok");
+    findByBookInfo();
   }
 
   public void rentImpossible() {
@@ -146,10 +146,11 @@ public class BookHandler {
     return null;
   }
 
-  public void findByBookInfo(String str) {
+  public void findByBookInfo() {
     for (int i = 0; i < bookList.size(); i++) {
       Book book = bookList.get(i);
-      if (book.getRentAble() == str) {
+      String able = "ok";
+      if (able.equals(book.getRentAble())) {
         System.out.println("==========================");
         System.out.printf("도서번호: %s\n", book.getBookNo());
         System.out.printf("도서명: %s\n", book.getBookName());
