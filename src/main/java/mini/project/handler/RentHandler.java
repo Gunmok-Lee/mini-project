@@ -76,7 +76,7 @@ public class RentHandler {
 
   public void rentImpossible() {
     System.out.println("[대여중 도서목록]");
-    bookHandler.findByBookInfo();
+    bookHandler.findRentingInfo();
 
   }
   

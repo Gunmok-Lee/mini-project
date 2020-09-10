@@ -106,13 +106,29 @@ public class BookHandler {
     for (int i = 0; i < bookList.size(); i++) {
       Book book = bookList.get(i);
       String able = "ok";
-      if (able.equals(book.getRentAble())) {
+      if (able.equalsIgnoreCase(book.getRentAble())) {
         System.out.println("==========================");
         System.out.printf("도서번호: %s\n", book.getBookNo());
         System.out.printf("도서명: %s\n", book.getBookName());
         System.out.printf("출판사: %s\n", book.getCompany());
         System.out.printf("저자: %s\n", book.getAuthor());
-        return;
+      }
+    }
+    return;
+  }
+
+  public void findRentingInfo() {
+    for (int i = 0; i < bookList.size(); i++) {
+      Book book = bookList.get(i);
+      String able = "no";
+      if (able.equalsIgnoreCase((book.getRentAble()))) {
+        System.out.println("==========================");
+        System.out.printf("도서번호: %s\n", book.getBookNo());
+        System.out.printf("도서명: %s\n", book.getBookName());
+        System.out.printf("출판사: %s\n", book.getCompany());
+        System.out.printf("저자: %s\n", book.getAuthor());
+        System.out.printf("대여자: %s\n", book.getRentOwner());
+        System.out.printf("대여일: %s\n", book.getRentDate());
       }
     }
     return;
