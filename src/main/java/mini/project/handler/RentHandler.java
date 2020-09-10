@@ -18,7 +18,7 @@ public class RentHandler {
     System.out.println("[도서 대여]");
 
     Object object = new Object();
-
+    
   }
 
   public void searchRentAble() {

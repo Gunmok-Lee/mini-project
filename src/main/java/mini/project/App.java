@@ -3,15 +3,12 @@
  */
 package mini.project;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import mini.project.domain.Book;
 import mini.project.domain.Member;
-import mini.project.domain.Rent;
 import mini.project.handler.BookHandler;
 import mini.project.handler.MemberHandler;
-import mini.project.handler.RentHandler;
 import mini.project.util.Prompt;
 
 public class App {
@@ -24,9 +21,7 @@ public class App {
     List<Book> bookList = new LinkedList<>();
     BookHandler bookHandler = new BookHandler(bookList, memberHandler);
 
-    List<Rent> rentList = new ArrayList<>();
-    RentHandler rentHandler = new RentHandler(rentList, memberHandler, bookHandler);
-
+    
     System.out.println("안녕하십니까? \n비트도서관 대여 관리 시스템 입니다.");
     System.out.println();
     loop:
