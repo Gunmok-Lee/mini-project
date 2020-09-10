@@ -22,28 +22,30 @@ public class App {
     BookHandler bookHandler = new BookHandler(bookList, memberHandler);
 
 
-    System.out.println("안녕하십니까? \n비트도서관 대여관리 시스템 입니다.");
+    System.out.println("안녕하십니까? \n비트도서관 대여 관리 시스템 입니다.");
     System.out.println();
     loop:
       while (true) {
-        System.out.println("1: 도서관리, 2: 회원관리, 3: 대여관리, 0: 종료");
+        System.out.println("1: 도서 관리, 2: 회원 관리, 3: 대여 관리, 0: 종료");
         String command = Prompt.inputString("명령을 입력하세요. > ");
         switch (command) {
           case "1" : {
             System.out.println("[도서관리]\n"
-                + "1: 도서등록, 2: 도서리스트, 3: 도서정보수정, 4: 도서정보삭제");
+                + "1: 도서 등록, 2: 도서 리스트, 3: 도서정보 수정, 4: 도서정보 삭제");
             String commandBook = Prompt.inputString("도서관리 명령을 입력하세요. > ");
             switch (commandBook) {
               case "1" : bookHandler.add(); break;
               case "2" : bookHandler.list(); break;
               case "3" : bookHandler.update(); break;
+              case "4" : bookHandler.delete(); break;
               default :
-                System.out.println("존재하지 않는 명령입니다. 초기화면으로 돌아갑니다.");
+                System.out.println("존재하지 않는 명령입니다. 초기 화면으로 돌아갑니다.");
             }
           } break ;
           case "2": {
-            System.out.println("[회원관리]\n"
-                + "1: 회원가입, 2: 회원간이명부, 3: 회원상세정보, 4: 회원정보수정, 5: 회원삭제, 6: 아이디찾기, 7: 패스워드찾기");
+            System.out.println("[회원 관리]\n"
+                + "1: 회원가입, 2: 회원 간이 명부, 3: 회원 상세정보, 4: 회원정보 수정\n"
+                + "5: 회원 삭제, 6: 아이디 찾기, 7: 패스워드 찾기");
             String commandMember = Prompt.inputString("회원관리 명령을 입력하세요. > ");
             switch (commandMember) {
               case "1": memberHandler.add(); break;
@@ -59,11 +61,11 @@ public class App {
           } break;
           case "3": {
             System.out.println();
-            String commandRent = Prompt.inputString("대여관리 명령을 입력하세요. > ");
+            String commandRent = Prompt.inputString("대여 관리 명령을 입력하세요. > ");
             switch (commandRent) {
               case "1" : bookHandler.add();break;
               default :
-                System.out.println("존재하지 않는 명령입니다. 초기화면으로 돌아갑니다.");
+                System.out.println("존재하지 않는 명령입니다. 초기 화면으로 돌아갑니다.");
             }
           } break;
 

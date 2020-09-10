@@ -17,7 +17,7 @@ public class BookHandler {
   } 
   
   public void add() {
-    System.out.println("[정보 등록]");
+    System.out.println("[도서 등록]");
       
     Book book = new Book();
     book.setBookNo(Prompt.inputInt("도서 번호: "));
@@ -36,14 +36,14 @@ public class BookHandler {
         System.out.printf("%s님은 대여가 가능합니다", id);
         break;
       }
-      System.out.println("아이디가 일치하지 않습니다."); // 등록된 회원과 이름이 일치하지 않을 경우
+      System.out.println("아이디가 일치하지 않습니다."); 
     }
 
     bookList.add(book);
   }
 
   public void list() {
-    System.out.println("[도서 정보]");
+    System.out.println("[도서 목록]");
 
     Iterator<Book> iterator = bookList.iterator();
 
@@ -60,7 +60,7 @@ public class BookHandler {
   }
  
   public void update() {
-    System.out.println("[도서 정보수정]");
+    System.out.println("[도서정보 수정]");
     int bookNo = Prompt.inputInt("도서 번호: ");
     Book book = findByNo(bookNo);
     
@@ -84,7 +84,7 @@ public class BookHandler {
   }
   
   public void delete() {
-    System.out.println("[도서 정보삭제]");
+    System.out.println("[도서정보 삭제]");
     int bookNo = Prompt.inputInt("도서 번호: ");
     int index = indexOf(bookNo);
     
