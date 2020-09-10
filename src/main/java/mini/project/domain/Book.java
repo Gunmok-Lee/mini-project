@@ -5,7 +5,8 @@ public class Book {
   private String bookName; // 도서이름
   private String company; // 출판사
   private String author; // 저자
-   
+  private String rentAble;
+
   public int getBookNo() {
     return bookNo;
   }
@@ -30,4 +31,10 @@ public class Book {
   public void setAuthor(String author) {
     this.author = author;
   }
-} 
+  public String getRentAble() {
+    return rentAble;
+  }
+  public void setRentAble(String rentAble) {
+    this.rentAble = rentAble;
+  }
+}
