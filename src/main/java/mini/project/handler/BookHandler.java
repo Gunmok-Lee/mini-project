@@ -24,7 +24,6 @@ public class BookHandler {
     book.setBookName(Prompt.inputString("도서명: "));
     book.setCompany(Prompt.inputString("출판사: "));
     book.setAuthor(Prompt.inputString("저자: "));
-    book.setRegisteredDate(Prompt.inputDate("대여 일자: "));
     book.setRentAble("ok");
 
     while (true) {
@@ -51,12 +50,11 @@ public class BookHandler {
     while (iterator.hasNext()) {
       Book book = iterator.next();
       System.out.printf(" 도서 번호: %d\n 도서명: %s\n 출판사: %s\n"
-          + " 저자: %s\n 대여 일자: %s\n",
+          + " 저자: %s\n",
           book.getBookNo(),
           book.getBookName(),
           book.getCompany(),
-          book.getAuthor(),
-          book.getRegisteredDate());
+          book.getAuthor());
     }
   }
 
