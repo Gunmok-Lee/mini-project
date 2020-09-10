@@ -10,7 +10,7 @@ public class Book {
   private String author; // 저자
   private Date registeredDate; // 대여 일자
   private Date currentDate; // 대여 일자
-  
+   
   public int getBookNo() {
     return bookNo;
   }

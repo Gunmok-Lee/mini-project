@@ -14,7 +14,7 @@ import mini.project.util.Prompt;
 public class App {
 
   public static void main(String[] args) {
-
+  
     List<Member> memberList = new LinkedList<>();
     MemberHandler memberHandler = new MemberHandler(memberList);
 
@@ -78,4 +78,4 @@ public class App {
       }
     Prompt.close();
   }
-}
+} 
