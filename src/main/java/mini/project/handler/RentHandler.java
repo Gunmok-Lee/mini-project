@@ -18,11 +18,11 @@ public class RentHandler {
     System.out.println("[도서 대여]");
 
     Object object = new Object();
-    
+
   }
 
   public void searchRentAble() {
-    System.out.println("[대여가능 도서목록]");
+    System.out.println("[대여 가능 도서목록]");
     bookHandler.findByBookInfo();
   }
 }
