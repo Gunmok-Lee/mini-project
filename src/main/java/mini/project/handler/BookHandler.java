@@ -3,24 +3,22 @@ package mini.project.handler;
 import java.util.Iterator;
 import java.util.List;
 import mini.project.domain.Book;
-import mini.project.domain.Member;
 import mini.project.util.Prompt;
 
 public class BookHandler {
-
+  
   List<Book> bookList;
-  Member member;
   MemberHandler memberHandler;
   Book book;
 
   public BookHandler(List<Book> list, MemberHandler memberHandler) {
     this.bookList = list;
     this.memberHandler = memberHandler;
-  }
-
+  } 
+  
   public void add() {
-    System.out.println("[대여 도서 등록]");
-
+    System.out.println("[정보 등록]");
+      
     Book book = new Book();
     book.setBookNo(Prompt.inputInt("도서 번호: "));
     book.setBookName(Prompt.inputString("도서명: "));
@@ -32,10 +30,10 @@ public class BookHandler {
       String id = Prompt.inputString("아이디: ");
 
       if (id.length() == 0) { // id 미 입력 경우
-        System.out.println("도서 대여를 취소합니다.");
-        return;
+        System.out.println("아이디를 입력하세요.");
+        continue;
       } else if (memberHandler.findById(id) != null) {
-        System.out.printf("%s님, 대여가 완료되었습니다", id);
+        System.out.printf("%s님은 대여가 가능합니다", id);
         break;
       }
       System.out.println("아이디가 일치하지 않습니다."); // 등록된 회원과 이름이 일치하지 않을 경우
@@ -45,7 +43,7 @@ public class BookHandler {
   }
 
   public void list() {
-    System.out.println("[대여도서 정보]");
+    System.out.println("[도서 정보]");
 
     Iterator<Book> iterator = bookList.iterator();
 
@@ -60,25 +58,68 @@ public class BookHandler {
           book.getRegisteredDate());
     }
   }
-
+ 
   public void update() {
-    System.out.println("[대여정보 수정]");
-
-    int bookNo = Prompt.inputInt(
-        String.format("도서 번호 : [%d] => ", book.getBookNo()));
-    String bookName = Prompt.inputString(
-        String.format("도서명 : [%s] => ", book.getBookName()));
-    String company = Prompt.inputString(
-        String.format("출판사 : [%s] =>  ", book.getCompany()));
-    String author = Prompt.inputString(
-        String.format("저자 : [%s] => ", book.getAuthor()));
+    System.out.println("[도서 정보수정]");
+    int bookNo = Prompt.inputInt("도서 번호: ");
+    Book book = findByNo(bookNo);
     
-
-    book.setBookNo(bookNo);
+    if(book == null) {
+      System.out.println("해당 번호의 도서가 없습니다.");
+      return;
+    }
+    
+    String bookName = Prompt.inputString(
+        String.format("도서명: [%s] => ", book.getBookName()));
+    String company = Prompt.inputString(
+        String.format("출판사: [%s] => ", book.getCompany()));
+    String author = Prompt.inputString(
+        String.format("저자: [%s] => ", book.getAuthor()));
+    
     book.setBookName(bookName);
     book.setCompany(company);
     book.setAuthor(author);
-
-    System.out.println("회원정보를 변경하였습니다.");
+    
+    System.out.println("도서정보를 변경하였습니다.");
   }
-}
+  
+  public void delete() {
+    System.out.println("[도서 정보삭제]");
+    int bookNo = Prompt.inputInt("도서 번호: ");
+    int index = indexOf(bookNo);
+    
+    if (index == -1) {
+      System.out.println("해당 번호의 도서 번호가 없습니다.");
+      return;
+    }
+    
+    String response = Prompt.inputString("삭제하시겠습니까?(y/N) ");
+    if(!response.equalsIgnoreCase("y")) {
+      System.out.println("도서 정보삭제를 취소하였습니다.");
+      return;
+    }
+    
+    bookList.remove(index);
+    System.out.println("도서 정보를 삭제하였습니다.");
+  }
+  
+  private Book findByNo(int no) {
+    for (int i = 0; i < bookList.size(); i++) {
+      Book book = bookList.get(i);
+      if (book.getBookNo() == no) {
+        return book;
+      }
+    } 
+    return null;
+  }
+  
+  private int indexOf(int no) {
+    for (int i = 0; i < bookList.size(); i++) {
+      Book book = bookList.get(i);
+      if (book.getBookNo() == no) {
+        return i;
+      }
+    }
+    return -1;
+  } 
+} 
