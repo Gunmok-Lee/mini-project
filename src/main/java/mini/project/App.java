@@ -27,7 +27,7 @@ public class App {
     System.out.println();
     loop:
       while (true) {
-        System.out.println("1: 도서 관리, 2: 회원 관리, 3: 대여 관리, 0: 종료");
+        System.out.println("1: 도서 관리, 2: 회원 관리, 3: 대여 관리, 0: 종료\n");
         String command = Prompt.inputString("명령을 입력하세요. > ");
         switch (command) {
           case "1" : {
@@ -44,9 +44,9 @@ public class App {
             }
           } break ;
           case "2": {
-            System.out.println("[회원 관리]\n"
+            System.out.println("\n[회원 관리]\n"
                 + "1: 회원가입, 2: 회원 간이 명부, 3: 회원 상세정보, 4: 회원정보 수정\n"
-                + "5: 회원 삭제, 6: 아이디 찾기, 7: 패스워드 찾기");
+                + "5: 회원 삭제, 6: 아이디 찾기, 7: 패스워드 찾기\n");
             String commandMember = Prompt.inputString("회원관리 명령을 입력하세요. > ");
             switch (commandMember) {
               case "1": memberHandler.add(); break;

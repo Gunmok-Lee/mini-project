@@ -13,8 +13,13 @@ public class MemberHandler {
   }
 
   public void add() {
+<<<<<<< HEAD
     System.out.println("[회원가입]");
 
+=======
+    System.out.println("\n[회원가입]");
+ 
+>>>>>>> branch 'main' of https://github.com/Gunmok-Lee/mini-project.git
     Member member = new Member();
     while (true) {
       int count = 0;
@@ -44,7 +49,7 @@ public class MemberHandler {
   }
 
   public void list() {
-    System.out.println("[회원 리스트]");
+    System.out.println("\n[회원 리스트]");
 
     Iterator<Member> iterator = memberList.iterator();
 
@@ -65,7 +70,7 @@ public class MemberHandler {
   }
 
   public void detail() {
-    System.out.println("[회원 상세정보]");
+    System.out.println("\n[회원 상세정보]");
     String id = Prompt.inputString("아이디 : ");
     String password = Prompt.inputString("패스워드 : ");
     Member member = findInformation(id, password);
@@ -91,7 +96,7 @@ public class MemberHandler {
   }
 
   public void update() {
-    System.out.println("[회원정보 수정]");
+    System.out.println("\n[회원정보 수정]");
     String id = Prompt.inputString("아이디 : ");
     String password = Prompt.inputString("패스워드 : ");
     Member member = findInformation(id, password);
@@ -135,7 +140,7 @@ public class MemberHandler {
   }
 
   public void delete() {
-    System.out.println("[회원탈퇴]");
+    System.out.println("\n[회원탈퇴]");
     String id = Prompt.inputString("아이디 : ");
     String password = Prompt.inputString("패스워드 : ");
     int index = indexOf(id, password);
@@ -159,7 +164,7 @@ public class MemberHandler {
   }
 
   public void searchId() {
-    System.out.println("[아이디 찾기]");
+    System.out.println("\n[아이디 찾기]");
     String name = Prompt.inputString("이름 : ");
     String email = Prompt.inputString("이메일 : ");
     for (int i = 0; i < memberList.size(); i++) {
@@ -180,7 +185,7 @@ public class MemberHandler {
 
 
   public Member searchPassword() {
-    System.out.println("[비밀번호 찾기]");
+    System.out.println("\n[비밀번호 찾기]");
     String id = Prompt.inputString("아이디 : ");
     for (int i = 0; i < memberList.size(); i++) {
       Member member = memberList.get(i);
