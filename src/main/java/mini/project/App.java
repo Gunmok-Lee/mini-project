@@ -28,7 +28,6 @@ public class App {
       while (true) {
         System.out.println("1: 도서관리, 2: 회원관리, 3: 대여관리, 0: 종료");
         String command = Prompt.inputString("명령을 입력하세요. > ");
-
         switch (command) {
           case "1" : {
             System.out.println("[도서관리]\n"
@@ -41,7 +40,7 @@ public class App {
               default :
                 System.out.println("존재하지 않는 명령입니다. 초기화면으로 돌아갑니다.");
             }
-          } break;
+          } break ;
           case "2": {
             System.out.println("[회원관리]\n"
                 + "1: 회원가입, 2: 회원간이명부, 3: 회원상세정보, 4: 회원정보수정, 5: 회원삭제, 6: 아이디찾기, 7: 패스워드찾기");
