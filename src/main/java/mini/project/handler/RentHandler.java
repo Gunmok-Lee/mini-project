@@ -11,6 +11,8 @@ public class RentHandler {
     System.out.println("[도서 대여]");
     
     Object object = new Object();
+    도서 번호
+    도서명 
     
   }
 }
