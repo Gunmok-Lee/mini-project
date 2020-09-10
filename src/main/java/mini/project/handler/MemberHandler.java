@@ -13,13 +13,8 @@ public class MemberHandler {
   }
 
   public void add() {
-<<<<<<< HEAD
-    System.out.println("[회원가입]");
-
-=======
     System.out.println("\n[회원가입]");
- 
->>>>>>> branch 'main' of https://github.com/Gunmok-Lee/mini-project.git
+
     Member member = new Member();
     while (true) {
       int count = 0;
