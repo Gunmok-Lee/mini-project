@@ -32,4 +32,9 @@ public class RentHandler {
     
     
   }
+
+  public void searchRentAble() {
+    System.out.println("[대여가능 도서목록]");
+    bookHandler.findByBookInfo();
+  }
 }
