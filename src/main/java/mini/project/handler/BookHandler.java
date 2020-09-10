@@ -90,39 +90,6 @@ public class BookHandler {
     bookList.remove(index);
     System.out.println("도서 정보를 삭제하였습니다.");
   }
-  //-------------------------------------------------rent관련 메서드
-  public void rent() {
-    System.out.println("[도서 대여]");
-
-    Rent rent = new Rent();
-    rent.setRentDate(Prompt.inputDate("대여 일자: "));
-
-    while(true) {
-      int no = Prompt.inputInt("도서 번호: ");
-
-      if(Integer.toString(no) == null) {
-        System.out.println("도서 번호를 입력하세요.");
-        continue;
-      } else {
-        break;
-      }
-    }
-    while (true) {
-      String id = Prompt.inputString("아이디: ");
-
-      if (id.length() == 0) { // id 미 입력 경우
-        System.out.println("아이디를 입력하세요.");
-        continue;
-      } else if (memberHandler.findById(id) != null) {
-        System.out.printf("%s님은 대여가 가능합니다", id);
-        break;
-      }
-      System.out.println("아이디가 일치하지 않습니다.");
-    }
-
-    System.out.println("대여가 완료되었습니다.");
-    rentList.add(rent);
-  }
 
 
   private Book findByNo(int no) {
