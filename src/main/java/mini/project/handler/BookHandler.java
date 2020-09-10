@@ -17,7 +17,7 @@ public class BookHandler {
   }
 
   public void add() {
-    System.out.println("[도서 등록]");
+    System.out.println("\n[도서 등록]");
 
     Book book = new Book();
     book.setBookNo(Prompt.inputInt("도서 번호: "));
