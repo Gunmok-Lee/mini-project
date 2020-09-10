@@ -99,7 +99,7 @@ public class MemberHandler {
     if (member == null) {
       return;
     }
-
+ 
     String name = Prompt.inputString(
         String.format("이름 : [%s] => ", member.getName()));
     int age = Prompt.inputInt(
