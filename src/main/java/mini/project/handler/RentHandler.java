@@ -29,7 +29,7 @@ public class RentHandler {
         continue;
       } else {
         break;
-      }
+      } 
     }
 
     while (true) {

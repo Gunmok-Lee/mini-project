@@ -79,7 +79,7 @@ public class BookHandler {
     if (index == -1) {
       System.out.println("해당 번호의 도서 번호가 없습니다.");
       return;
-    }
+    } 
 
     String response = Prompt.inputString("삭제하시겠습니까?(y/N) ");
     if(!response.equalsIgnoreCase("y")) {

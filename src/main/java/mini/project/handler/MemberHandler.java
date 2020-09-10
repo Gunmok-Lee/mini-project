@@ -14,7 +14,7 @@ public class MemberHandler {
 
   public void add() {
     System.out.println("[회원가입]");
-
+ 
     Member member = new Member();
     while (true) {
       int count = 0;

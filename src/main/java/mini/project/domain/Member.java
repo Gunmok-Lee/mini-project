@@ -11,7 +11,7 @@ public class Member {
   private String password; // 패스워드
   private String tel; // 전화번호
   private Date registeredDate; // 가입일
-  public String getId() {
+  public String getId() { 
     return id;
   }
   public void setId(String id) {
