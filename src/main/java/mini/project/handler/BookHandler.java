@@ -26,18 +26,7 @@ public class BookHandler {
     book.setAuthor(Prompt.inputString("저자: "));
     book.setRentAble("ok");
 
-    while (true) {
-      String id = Prompt.inputString("아이디: ");
 
-      if (id.length() == 0) { // id 미 입력 경우
-        System.out.println("아이디를 입력하세요.");
-        continue;
-      } else if (memberHandler.findById(id) != null) {
-        System.out.printf("%s님은 대여가 가능합니다", id);
-        break;
-      }
-      System.out.println("아이디가 일치하지 않습니다.");
-    }
 
     bookList.add(book);
   }
