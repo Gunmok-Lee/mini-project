@@ -22,7 +22,9 @@ public class RentHandler {
     Object object = new Object();
     
     while(true) {
-      int no = Prompt.inputString("도서 번호: ") 
+      int no = Prompt.inputString("도서 번호: ");
+      
+      if(no)
     }
     
     
